@@ -4,6 +4,7 @@ pipeline {
     }
     environment {
         DOCKERHUB_REPO = 'beginner-html-site'
+        DOCKERHUB_USERNAME = 'rupindervashisht'
         KUBECONFIG = '/home/ubuntu/.kube/config'
     }
     triggers {
