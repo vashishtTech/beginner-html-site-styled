@@ -19,9 +19,9 @@ pipeline {
                 script {
                     def imageTag = "v${env.BUILD_NUMBER}"
                     sh """
-                    docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag} .
-                    docker login -u ${DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}
-                    docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag}
+                    sudo docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag} .
+                    sudo docker login -u ${DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}
+                    sudo docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag}
                     """
                 }
             }
