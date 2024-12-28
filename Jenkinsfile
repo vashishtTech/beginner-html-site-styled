@@ -17,14 +17,17 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
                     def imageTag = "v${env.BUILD_NUMBER}"
-                    sh """
-                    docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag} .
-                    docker login -u ${DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD}
-                    docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag}
-                    """
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                        docker build -t ${USERNAME}/${DOCKERHUB_REPO}:${imageTag} .
+                        echo "${PASSWORD}" | docker login -u "${USERNAME}" --password-stdin
+                        docker push ${USERNAME}/${DOCKERHUB_REPO}:${imageTag}
+                        """
+                    }
                 }
             }
         }
