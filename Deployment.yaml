@@ -17,6 +17,7 @@ spec:
       containers:
       - name: beginner-html-site
         image: rupindervashisht/beginner-html-site:v1
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
