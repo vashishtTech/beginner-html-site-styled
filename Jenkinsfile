@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'k8-master'
+    }
     environment {
         DOCKERHUB_USERNAME = 'rupindervashisht'
         DOCKERHUB_REPO = 'beginner-html-site'
