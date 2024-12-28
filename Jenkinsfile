@@ -3,7 +3,6 @@ pipeline {
         label 'k8-master'
     }
     environment {
-        DOCKERHUB_USERNAME = 'rupindervashisht'
         DOCKERHUB_REPO = 'beginner-html-site'
         KUBECONFIG = '/home/ubuntu/.kube/config'
     }
