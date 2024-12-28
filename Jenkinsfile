@@ -17,7 +17,6 @@ pipeline {
             }
         }
         stage('Build Docker Image') {
-        stage('Build Docker Image') {
             steps {
                 script {
                     def imageTag = "v${env.BUILD_NUMBER}"
