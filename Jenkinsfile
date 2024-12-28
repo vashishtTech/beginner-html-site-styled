@@ -35,7 +35,7 @@ pipeline {
                 script {
                     def imageTag = "v${env.BUILD_NUMBER}"
                     sh """
-                    kubectl apply -f deployment.yaml
+                    kubectl apply -f Deployment.yaml
                     kubectl set image deployment/beginner-html-site beginner-html-site=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:${imageTag}
                     """
                 }
